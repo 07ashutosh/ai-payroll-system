@@ -417,7 +417,7 @@ MIT License
 
 ## 👥 Authors
 
-- Your Name
+- Ashutosh tiwari
 
 ## 🆘 Support
 
