@@ -1,0 +1,117 @@
+.payroll-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.empty-state-card {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-top: 40px;
+}
+
+.empty-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.empty-state-card h2 {
+  color: #2d3748;
+  margin: 0 0 10px 0;
+}
+
+.empty-state-card p {
+  color: #718096;
+  margin: 0 0 30px 0;
+}
+
+.payroll-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.summary-card h3 {
+  font-size: 14px;
+  color: #718096;
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.summary-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+}
+
+.payroll-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.payroll-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payroll-table thead {
+  background: #f7fafc;
+}
+
+.payroll-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 14px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.payroll-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #4a5568;
+}
+
+.payroll-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+.net-amount {
+  font-weight: 700;
+  color: #22543d;
+  font-size: 16px;
+}
+
+.deduction {
+  color: #c53030;
+}
+
+.status-pending {
+  background: #fff4e6;
+  color: #e67e22;
+}
+
+.status-paid {
+  background: #d4f4dd;
+  color: #22543d;
+}
+
+.status-processing {
+  background: #bee3f8;
+  color: #2c5282;
+}
