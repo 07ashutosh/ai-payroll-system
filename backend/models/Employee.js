@@ -236,12 +236,19 @@ employeeSchema.index({ department: 1 });
 employeeSchema.index({ status: 1 });
 
 // Pre-save middleware to generate employee ID
-employeeSchema.pre('save', async function(next) {
+// ✅ FIXED CODE
+employeeSchema.pre('validate', async function(next) {
   if (this.isNew && !this.employeeId) {
-    const count = await this.constructor.countDocuments();
-    this.employeeId = `EMP${String(count + 1).padStart(5, '0')}`;
+    try {
+      const count = await this.constructor.countDocuments();
+      this.employeeId = `EMP${String(count + 1).padStart(5, '0')}`;
+      next();
+    } catch (error) {
+      next(error);
+    }
+  } else {
+    next();
   }
-  next();
 });
 
 // Method to calculate monthly salary

@@ -93,15 +93,19 @@ exports.createEmployee = async (req, res) => {
     // Create employee
     const employee = await Employee.create(req.body);
 
-    // Populate department
-    await employee.populate('department', 'name code');
+    // Populate department - Correct way
+    const populatedEmployee = await Employee.findById(employee._id)
+      .populate('department', 'name code');
 
     res.status(201).json({
       success: true,
       message: 'Employee created successfully',
-      data: employee
+      data: populatedEmployee
     });
   } catch (error) {
+    console.error('Create employee error:', error);
+    
+    // Duplicate key error (unique constraint)
     if (error.code === 11000) {
       return res.status(400).json({
         success: false,
@@ -109,6 +113,17 @@ exports.createEmployee = async (req, res) => {
       });
     }
 
+    // Validation errors
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(err => err.message);
+      return res.status(400).json({
+        success: false,
+        message: 'Validation Error',
+        errors: messages
+      });
+    }
+
+    // Other errors
     res.status(500).json({
       success: false,
       message: 'Error creating employee',
