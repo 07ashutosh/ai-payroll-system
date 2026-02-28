@@ -76,10 +76,17 @@ export const payrollAPI = {
 };
 
 // Department API
+// Department API
 export const departmentAPI = {
   getAll: () => api.get('/departments'),
+  getById: (id) => api.get(`/departments/${id}`),
   create: (data) => api.post('/departments', data),
+  update: (id, data) => api.put(`/departments/${id}`, data),
+  delete: (id) => api.delete(`/departments/${id}`),
+  getStats: (id) => api.get(`/departments/${id}/stats`),
 };
+console.log(departmentAPI);
+
 
 // AI API
 export const aiAPI = {

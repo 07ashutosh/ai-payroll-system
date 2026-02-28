@@ -1,12 +1,12 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import './Layout.css';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./Layout.css";
 
 const Layout = ({ children }) => {
   const location = useLocation();
 
   const isActive = (path) => {
-    return location.pathname === path ? 'active' : '';
+    return location.pathname === path ? "active" : "";
   };
 
   return (
@@ -15,33 +15,44 @@ const Layout = ({ children }) => {
         <div className="sidebar-header">
           <h2>💼 AI Payroll</h2>
         </div>
-        
+
         <nav className="sidebar-nav">
-          <Link to="/dashboard" className={`nav-item ${isActive('/dashboard')}`}>
+          <Link
+            to="/dashboard"
+            className={`nav-item ${isActive("/dashboard")}`}
+          >
             <span className="nav-icon">📊</span>
             <span>Dashboard</span>
           </Link>
-          
-          <Link to="/employees" className={`nav-item ${isActive('/employees')}`}>
+
+          <Link
+            to="/employees"
+            className={`nav-item ${isActive("/employees")}`}
+          >
             <span className="nav-icon">👥</span>
             <span>Employees</span>
           </Link>
-          
-          <Link to="/expenses" className={`nav-item ${isActive('/expenses')}`}>
+
+          <Link to="/expenses" className={`nav-item ${isActive("/expenses")}`}>
             <span className="nav-icon">💳</span>
             <span>Expenses</span>
           </Link>
-          
-          <Link to="/payroll" className={`nav-item ${isActive('/payroll')}`}>
+
+          <Link to="/payroll" className={`nav-item ${isActive("/payroll")}`}>
             <span className="nav-icon">💰</span>
             <span>Payroll</span>
+          </Link>
+
+          <Link
+            to="/departments" className={`nav-item ${isActive("/departments")}`}
+          >
+            <span className="nav-icon">🏢</span>
+            <span>Departments</span>
           </Link>
         </nav>
       </aside>
 
-      <main className="main-content">
-        {children}
-      </main>
+      <main className="main-content">{children}</main>
     </div>
   );
 };

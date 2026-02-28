@@ -1,20 +1,26 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 // Pages (to be created)
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Employees from './pages/Employees';
-import Expenses from './pages/Expenses';
-import Payroll from './pages/Payroll';
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import Employees from "./pages/Employees";
+import Expenses from "./pages/Expenses";
+import Payroll from "./pages/Payroll";
+import Departments from "./pages/Departments";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   return token ? children : <Navigate to="/login" />;
 };
 
@@ -27,13 +33,21 @@ function App() {
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          
+
           {/* Protected Routes */}
           <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/departments"
+            element={
+              <ProtectedRoute>
+                <Departments />
               </ProtectedRoute>
             }
           />
@@ -61,7 +75,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          
+
           {/* Default Route */}
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
